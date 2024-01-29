@@ -10,7 +10,9 @@ body{
     font-family: 'Bitter', serif;
     background-color: #000;
 }
-
+input{
+    z-index: 0 !important;
+}
 /*-------- Sidebar || Part -------*/
 .sidebar{
     width: 23%;
