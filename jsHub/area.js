@@ -41,7 +41,7 @@ export default class Area{
             const meal = new Meal();
 
             const MEAL_URL = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${$(e.target).closest('.area').attr('id')}`;
-            meal.get_meals(MEAL_URL);
+            meal.get_meals(MEAL_URL,false,true);
         });
     }
 

@@ -16,10 +16,12 @@ export default class Meal{
         }
     }
     
-    display_meals(meals,isSearchResult) {
+    display_meals(meals,isSearchResult,slice) {
 
         let content = '';
-        for (let meal of meals) {
+        const newMeals = (slice) ? meals.slice(0, 20): meals.slice(0);
+        
+        for (let meal of newMeals) {
             content += `
             <div class="meal col-12 col-md-6 col-lg-4 col-xl-3 p-2 animate__animated animate__bounceInUp" id=${meal.idMeal}>
                 <div class ="position-relative overflow-hidden  rounded-4">
@@ -50,13 +52,13 @@ export default class Meal{
         });
     }
 
-    get_meals(URL,isSearchQuery) {
+    get_meals(URL,isSearchQuery,slice) {
         this.#URL = URL;
         new Animation().show();
 
         this.#call_API().then((meals) => {
             new Animation().hide();
-            this.display_meals(meals,isSearchQuery);
+            this.display_meals(meals,isSearchQuery,slice);
         });
     }
 }

@@ -18,8 +18,8 @@ export default class Ingredients{
     
     display_ingredients(ingredients) {
         let content = '';
-
-        for (const ingredient of ingredients.slice(0,20)) {
+        console.log(ingredients);
+        for (const ingredient of ingredients) {
             content += `
             <div class="col-12 col-md-4 col-lg-3 p-2 animate__animated animate__bounceInUp">
                 <div class="ingredient text-white text-center d-flex flex-column gap-2" id=${ingredient.strIngredient}>
@@ -43,7 +43,7 @@ export default class Ingredients{
             console.log($(e.target).closest('.ingredient').attr('id'));
 
             const MEALS_URL = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${$(e.target).closest('.ingredient').attr('id')}`;
-            new Meal().get_meals(MEALS_URL);
+            new Meal().get_meals(MEALS_URL,false,true);
         });
     }
 
@@ -53,7 +53,7 @@ export default class Ingredients{
 
         this.#call_API().then((ingredients) => {
             new Animation().hide();
-            this.display_ingredients(ingredients);
+            this.display_ingredients(ingredients.slice(0,20));
         }).catch((error) => console.log(error));
     }
 }

@@ -5,13 +5,15 @@ import Area from "./area.js";
 import Ingredients from "./ingredient.js";
 import Meal from "./meal.js";
 import Animation from "./animation.js";
+
+/*-- Initialize the app --*/
 (async function () {
     const URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
     new Animation().show();
     try {
         const response = await fetch(URL);
         const data = await response.json();
-        console.log(data.meals);
+ 
         new Animation().hide();
         const meal = new Meal();
         meal.display_meals(data.meals);

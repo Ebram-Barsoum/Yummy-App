@@ -47,7 +47,7 @@ export default class Category{
             const id = $(e.target).closest('.category').attr('id');
             this.#URL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${id}`;
 
-            new Meal().get_meals(this.#URL);
+            new Meal().get_meals(this.#URL,false,true);
         });
         
     }
